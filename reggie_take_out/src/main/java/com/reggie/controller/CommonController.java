@@ -72,7 +72,7 @@ public class CommonController {
     public void download(String name, HttpServletResponse response) {
         try {
             //输入流，通过输入流读取文件内容
-            //bug
+            //bug..
             FileInputStream fileInputStream = new FileInputStream(basePath + name);
             //输出流，通过输出流将文件写回浏览器，在浏览器展示图片
             ServletOutputStream outputStream = response.getOutputStream();
