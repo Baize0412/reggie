@@ -93,7 +93,7 @@ public class CommonController {
             fileInputStream.close();
         } catch (IOException e) {
             e.printStackTrace();
-            log.error("未下载到图片..");
+            log.error("未下载到图片");
 
         }
 
