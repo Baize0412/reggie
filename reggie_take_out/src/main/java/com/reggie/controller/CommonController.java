@@ -72,17 +72,21 @@ public class CommonController {
     public void download(String name, HttpServletResponse response) {
         try {
             //输入流，通过输入流读取文件内容
-            //bug..
-            FileInputStream fileInputStream = new FileInputStream(basePath + name);
+            //bug..找不到目录(java.io.FileNotFoundException: /Users/daveluoster/Desktop/reggie/img/3defb521-41ff-4630-be74-cc572fb9d3f7.jpg (No such file or directory))
+            File file = new File(basePath + name);
+            FileInputStream fileInputStream = new FileInputStream(file);
             //输出流，通过输出流将文件写回浏览器，在浏览器展示图片
             ServletOutputStream outputStream = response.getOutputStream();
 
-            response.setContentType("image/jpeg");
+            //设置响应回去的是什么类型对的文件
+            response.setContentType("image/jpeg");  //图片文件
+
             int len = 0;
             byte[] bytes = new byte[1024];
+            //判断有没有读完
             while ((len = fileInputStream.read(bytes)) !=-1){
-                outputStream.write(bytes,0,len);
-                outputStream.flush();
+                outputStream.write(bytes,0,len);    //写回浏览器
+                outputStream.flush();   //刷新
             }
             //关闭资源
             outputStream.close();
