@@ -44,6 +44,7 @@ public class CommonController {
         //使用uuid重新生成文件名防止文件名重复
         String fileName = UUID.randomUUID().toString() + suffix;
 
+        log.info("uuid重新生成的文件名为filename = {}",fileName);
         //创建一个目录对象
         File dir = new File(basePath);
         //判断当前目录是否存在
@@ -54,7 +55,7 @@ public class CommonController {
 
 
         try {
-            file.transferTo(new File(basePath + originalFilename));
+            file.transferTo(new File(basePath + fileName));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -73,8 +74,7 @@ public class CommonController {
         try {
             //输入流，通过输入流读取文件内容
             //bug..找不到目录(java.io.FileNotFoundException: /Users/daveluoster/Desktop/reggie/img/3defb521-41ff-4630-be74-cc572fb9d3f7.jpg (No such file or directory))
-            File file = new File(basePath + name);
-            FileInputStream fileInputStream = new FileInputStream(file);
+            FileInputStream fileInputStream = new FileInputStream(new File(basePath + name));
             //输出流，通过输出流将文件写回浏览器，在浏览器展示图片
             ServletOutputStream outputStream = response.getOutputStream();
 
@@ -93,6 +93,7 @@ public class CommonController {
             fileInputStream.close();
         } catch (IOException e) {
             e.printStackTrace();
+            log.error("未下载到图片");
         }
 
     }
