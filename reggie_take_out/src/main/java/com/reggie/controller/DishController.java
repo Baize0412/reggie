@@ -62,8 +62,8 @@ public class DishController {
         LambdaQueryWrapper<Dish> queryWrapper = new LambdaQueryWrapper<>();
         //过滤条件
         queryWrapper.like(name != null,Dish::getName,name);
-        //排序条件
-        queryWrapper.orderByAsc(Dish::getUpdateTime);
+        //排序条件  时间倒序
+        queryWrapper.select().orderByDesc(Dish::getUpdateTime);
         //执行分页查询
         dishService.page(pageInfo,queryWrapper);
         //对象拷贝
@@ -89,4 +89,30 @@ public class DishController {
 
         return R.success(dishDtoPage);
     }
+
+    /**
+     * 根据ID查询口味信息菜品信息
+     * @return
+     */
+    @GetMapping("/{id}")
+    public R<DishDto> get(@PathVariable Long id) {
+        DishDto dishDto = dishService.getByIdWithFlavor(id);
+        return R.success(dishDto);
+    }
+
+
+    /**
+     * 修改菜品
+     * @param dishDto
+     * @return
+     */
+    @PutMapping
+    public R<String> update(@RequestBody DishDto dishDto) {
+        log.info(dishDto.toString());
+        dishService.updateWithFlavor(dishDto);
+        return R.success("新增成功");
+    }
 }
+
+
+
