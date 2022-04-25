@@ -47,7 +47,7 @@ public class DishController {
     }
 
     /**
-     * 菜品薪资分页查询
+     * 菜品分页查询
      * @param page
      * @param pageSize
      * @param name
@@ -114,7 +114,7 @@ public class DishController {
     }
 
     /**
-     *
+     * 分页查询
      * @param dish
      * @return
      */
