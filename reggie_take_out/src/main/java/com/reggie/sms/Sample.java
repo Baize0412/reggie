@@ -6,7 +6,6 @@ import com.aliyun.dysmsapi20170525.models.*;
 import com.aliyun.teaopenapi.*;
 import com.aliyun.teaopenapi.models.*;
 import lombok.extern.slf4j.Slf4j;
-
 public class Sample {
 
     /**
@@ -29,7 +28,7 @@ public class Sample {
     }
 
     public static void sms() throws Exception {
-        com.aliyun.dysmsapi20170525.Client client = Sample.createClient("LTAI5tSFWm9vq2CCHWU2VrT9", "qyyCvzYDCJoyMVmZZYXW9Ahg7w5IFx");
+        com.aliyun.dysmsapi20170525.Client client = Sample.createClient("test", "test");
         SendSmsRequest sendSmsRequest = new SendSmsRequest()
                 .setSignName("阿里云短信测试")
                 .setTemplateCode("SMS_154950909")
