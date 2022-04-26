@@ -59,7 +59,7 @@ public class SetmealController {
         //分页构造器
         Page<Setmeal> pageInfo = new Page<>(page,pageSize);
         Page<SetmealDto> setmealDtoPage = new Page<>();
-        LambdaQueryWrapper<Setmeal> queryWrapper = new LambdaQueryWrapper();
+        LambdaQueryWrapper<Setmeal> queryWrapper = new LambdaQueryWrapper<>();
         //过滤条件
         queryWrapper.like(name != null,Setmeal::getName,name);
         //排序条件
@@ -89,11 +89,16 @@ public class SetmealController {
         return R.success(setmealDtoPage);
     }
 
+    /**
+     * 删除
+     * @param ids
+     * @return
+     */
     @DeleteMapping
-    public R<String> delete(Long ids) {
+    public R<String> delete(@RequestParam List<Long> ids) {
         log.info("删除ID：+ {}", ids);
 //        categoryService.removeById(ids);
-        setmealService.removeById(ids);
+        setmealService.removeWithDIsh(ids);
         return R.success("删除成功");
     }
 

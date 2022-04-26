@@ -132,6 +132,20 @@ public class DishController {
 
         return R.success(list);
     }
+
+    /**
+     *
+     * 删除
+     * @param ids
+     * @return
+     */
+    @DeleteMapping
+    public R<String> delete(Long ids) {
+        log.info("删除ID：+ {}", ids);
+//        categoryService.removeById(ids);
+        categoryService.remove(ids);
+        return R.success("删除成功");
+    }
 }
 
 
