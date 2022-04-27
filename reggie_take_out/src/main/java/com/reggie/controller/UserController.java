@@ -7,10 +7,7 @@ import com.reggie.service.UserService;
 import com.reggie.sms.Sample;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.util.Map;
@@ -73,6 +70,12 @@ public class UserController {
 
         return R.error("登录失败");
     }
+
+    @GetMapping("/page")
+    public R<String> page() {
+        return null;
+    }
+
 
 
 }
