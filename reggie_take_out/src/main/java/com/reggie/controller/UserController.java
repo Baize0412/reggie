@@ -71,10 +71,20 @@ public class UserController {
         return R.error("登录失败");
     }
 
+    /**
+     * 订单分页查询
+     * @return
+     */
     @GetMapping("/page")
-    public R<String> page() {
-        return null;
+    public R<String> page(Long id) {
+        LambdaQueryWrapper<User> queryWrapper = new LambdaQueryWrapper<>();
+        LambdaQueryWrapper<User> userLambdaQueryWrapper = queryWrapper.eq(User::getId, id);
+
+        userService.count(userLambdaQueryWrapper);
+        return R.success("");
     }
+
+
 
 
 

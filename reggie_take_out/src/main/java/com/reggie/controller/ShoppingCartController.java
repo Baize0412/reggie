@@ -1,7 +1,5 @@
 package com.reggie.controller;
 
-import com.baomidou.mybatisplus.annotation.FieldFill;
-import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.reggie.common.BaseContext;
 import com.reggie.common.R;
@@ -131,6 +129,10 @@ public class ShoppingCartController {
         return R.success(list);
     }
 
+    /**
+     * 清除购物车
+     * @return
+     */
     @DeleteMapping("/clean")
     public R<String> clean() {
         Long currentId = BaseContext.getCurrentId();
